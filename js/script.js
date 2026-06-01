@@ -88,4 +88,62 @@ document.addEventListener('DOMContentLoaded', function () {
       window.open('https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(rawText), '_blank');
     });
   }
+
+  // --- Testimonial Carousel ---
+  var track = document.getElementById('testimonialTrack');
+  var prevBtn = document.getElementById('testimonialPrev');
+  var nextBtn = document.getElementById('testimonialNext');
+  var dotsContainer = document.getElementById('testimonialDots');
+
+  if (track && prevBtn && nextBtn && dotsContainer) {
+    var slides = track.querySelectorAll('.testimonial-slide');
+    var totalSlides = slides.length;
+    var currentIndex = 0;
+    var autoInterval;
+
+    function createDots() {
+      for (var i = 0; i < totalSlides; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'testimonial-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+        dot.addEventListener('click', function (idx) {
+          return function () { goToSlide(idx); };
+        }(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      if (currentIndex < 0) currentIndex = totalSlides - 1;
+      if (currentIndex >= totalSlides) currentIndex = 0;
+      track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+      var dots = dotsContainer.querySelectorAll('.testimonial-dot');
+      for (var i = 0; i < dots.length; i++) {
+        dots[i].classList.toggle('active', i === currentIndex);
+      }
+      resetAuto();
+    }
+
+    function nextSlide() { goToSlide(currentIndex + 1); }
+    function prevSlide() { goToSlide(currentIndex - 1); }
+
+    function startAuto() {
+      autoInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetAuto() {
+      clearInterval(autoInterval);
+      startAuto();
+    }
+
+    createDots();
+    startAuto();
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    track.addEventListener('mouseenter', function () { clearInterval(autoInterval); });
+    track.addEventListener('mouseleave', function () { startAuto(); });
+  }
 });

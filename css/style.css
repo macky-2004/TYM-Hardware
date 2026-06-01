@@ -1115,9 +1115,9 @@ ul { list-style: none; }
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
-  gap: 40px;
-  padding-bottom: 32px;
+  grid-template-columns: 1.6fr 1.3fr 1.3fr;
+  gap: 48px;
+  padding-bottom: 28px;
 }
 
 .footer-brand .logo { margin-bottom: 14px; }
@@ -1187,6 +1187,11 @@ ul { list-style: none; }
 }
 
 .footer ul li a:hover { color: var(--color-accent); }
+
+.footer-link-group { margin-bottom: 16px; }
+.footer-link-group:last-child { margin-bottom: 0; }
+
+.footer-legal-inline { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05); }
 
 /* Legal links row */
 .footer-legal {
@@ -1761,7 +1766,7 @@ ul { list-style: none; }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .products-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1.4fr 1.1fr 1.2fr; gap: 32px; }
   .trust-bar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .trust-item { border-right: none; padding: 0; }
 
@@ -1813,7 +1818,8 @@ ul { list-style: none; }
   .contact-form-wrap { padding: 28px; }
 
   .footer { padding: 40px 0 0; }
-  .footer-grid { grid-template-columns: 1fr; gap: 24px; padding-bottom: 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 20px; }
+  .footer-grid > :first-child { grid-column: 1 / -1; }
   .footer-legal { padding: 12px 0; }
   .footer-legal-links { gap: 6px; }
   .footer-legal-link { padding: 5px 11px; font-size: 0.68rem; gap: 4px; }
@@ -1882,7 +1888,7 @@ ul { list-style: none; }
   .form-group input, .form-group textarea { padding: 12px 14px; font-size: 0.85rem; }
 
   .footer { padding: 32px 0 0; }
-  .footer-grid { gap: 18px; padding-bottom: 16px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 16px; }
   .footer-legal { padding: 8px 0; }
   .footer-legal-links { gap: 4px; }
   .footer-legal-link { padding: 3px 8px; font-size: 0.6rem; gap: 3px; border-radius: 14px; }
